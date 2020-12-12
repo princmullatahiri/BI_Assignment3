@@ -9,12 +9,14 @@ from sklearn.neighbors import KNeighborsRegressor
 from sklearn.svm import SVR
 from sklearn.neural_network import MLPRegressor
 from sklearn.feature_selection import SelectKBest, RFE, f_regression
+from sklearn.decomposition import PCA
 import numpy as np
 import pandas as pd
 import time
 from pathlib import Path
 from Preprocessing import *
 from BestModels import *
+from DataAnalysis import plot_pca
 
 
 def train_test_split_data(df, size):
@@ -202,7 +204,6 @@ def KNeighnorsRegressor_model(X_train, X_test, y_train, y_test):
 
 def SVR_model(X_train, X_test, y_train, y_test):
     # SVR
-
     param = {
         'kernel': ['linear','poly','rbf','sigmoid'],
         'C': [0.01,0.1,1,2,4,8,12,16,32,64],
@@ -212,7 +213,7 @@ def SVR_model(X_train, X_test, y_train, y_test):
     svr = SVR()
     scorer = make_scorer(rmsle, greater_is_better=False)
     start = time.time()
-    svr_search = RandomizedSearchCV(svr, param, n_iter=10, cv=10, n_jobs=-1, random_state=101, scoring=scorer)
+    svr_search = RandomizedSearchCV(svr, param, n_iter=5, cv=10, n_jobs=-1, random_state=101, scoring=scorer, verbose=1)
     svr_search.fit(X_train, y_train)
     end = time.time()
     y_pred = svr_search.predict(X_test)
@@ -238,7 +239,7 @@ def MLPRegressor_model(X_train, X_test, y_train, y_test):
     mlp = MLPRegressor(random_state=101)
     scorer = make_scorer(rmsle, greater_is_better=False)
     start = time.time()
-    mlp_search = RandomizedSearchCV(mlp, param, n_iter=10, cv=10, n_jobs=-1, random_state=101, verbose=1,scoring=scorer)
+    mlp_search = RandomizedSearchCV(mlp, param, n_iter=5, cv=10, n_jobs=-1, random_state=101, verbose=1,scoring=scorer)
     mlp_search.fit(X_train, y_train)
     end = time.time()
     y_pred = mlp_search.predict(X_test)
@@ -277,6 +278,7 @@ def get_result_for_models(df, scaler, numerical_features, test_size, outlier_han
     data = []
     for model in all_models:
         best_parameters, rmsle_validation, rmsle_test, fit_time = model(X_train, X_test, y_train, y_test)
+
         new_model = {'Model':str(model).split(' ')[1].split('_')[0], 'HyperParameters': best_parameters, 'Scaler': scaler,
                      'Test Size' :test_size, 'Outlier Handling' : outlier_handling, 'Fit Time(s)': fit_time,
                      'Validation RMSLE':rmsle_validation, 'Test RMSLE':rmsle_test}
@@ -328,7 +330,7 @@ def create_submission_for_top3_models(test, train, nftrain, scaler, index):
     submit_df = pd.DataFrame(data=data)
 
 
-    submit_df.to_csv('../Submissions/LinearRegression.csv', index=False)
+    submit_df.to_csv('../Submissions/XGBRegressor.csv', index=False)
 
 
 
@@ -346,9 +348,6 @@ def drop_columns_not_in_test(X_train,X_test):
 
 def feature_selection_selectKbest():
     best_model1, best_scaler, best_outlier_selection, best_test_size = best_models()
-
-    import warnings
-    warnings.filterwarnings("ignore")
 
     data = []
     to_try = [1,5,10,15,20,25,30,35,40,50,60,70,80,100]
@@ -406,7 +405,7 @@ def feature_selection_RFE():
 
         for j in range(0, len(best_model)):
             model_cv = best_model[j]
-            if j == 3 or j == 5:
+            if j == 3 or j == 5 or j == 7:
                 continue
             df = pd.read_csv('../data/train.csv')
             df = handle_missing_values(df)
@@ -479,3 +478,55 @@ def create_submission_for_bestfeatures(test, train, nftrain, index):
 
 
     submit_df.to_csv('../Submissions/ElasticNet_top70features.csv', index=False)
+
+def pca_reduction(plot=False):
+
+    data = []
+    to_try = [2, 10, 20, 30, 40, 50, 60, 70, 100]
+    for i in range(0, len(to_try)):
+
+        best_model, best_scaler, best_outlier_selection, best_test_size = best_models()
+
+        for j in range(0, len(best_model)):
+            df = pd.read_csv('../data/train.csv')
+            df = handle_missing_values(df)
+            df, numerical_features = handle_outliers(df, method=best_outlier_selection[j])
+            df = transform_data(df)
+
+            X_train, X_test, y_train, y_test = train_test_split_data(df, size=best_test_size[j])
+
+            if best_scaler[j] != "None":
+                X_train, X_test = scale_data(X_train, X_test, numerical=numerical_features, scaler=best_scaler[j])
+
+            model_cv = best_model[j]
+            pca = PCA(n_components=to_try[i])
+            pca.fit(X_train)
+            X_train_fs = pca.transform(X_train)
+            X_test_fs = pca.transform(X_test)
+            start = time.time()
+            model_cv.fit(X_train_fs, y_train)
+            end = time.time()
+            y_pred = model_cv.predict(X_test_fs)
+            result = rmsle(y_test, y_pred)
+            mdl = str(model_cv).split('(')
+            fit_time = end - start
+            new_val = {'Model': mdl[0], 'HyperParemeters': '(' + mdl[1], 'Scaler': best_scaler[j],
+                       'Test Size': best_test_size[j], 'Outlier Handling': best_outlier_selection[j],
+                       'Fit Time(s)': fit_time, 'Nr. of Components': str(to_try[i]), 'Variance Explained':str(sum(pca.explained_variance_ratio_)) ,'Test RMSLE': result}
+            data.append(new_val)
+            print('Model:' + str(mdl[0]) + ', Top:' + str(to_try[i]) + ', Time:' + str(fit_time))
+            if plot and i == 2:
+                plot_pca(X_test, y_pred)
+
+    report_df = pd.DataFrame(data=data)
+    name = '../Report/FeatureSelection/DimensionalityReduction_PCA.csv'
+
+    if sum(1 for _ in Path("../Report/FeatureSelection/").glob('DimensionalityReduction_PCA.csv')) != 0:
+        all_other_datasets = pd.read_csv('../Report/FeatureSelection/DimensionalityReduction_PCA.csv')
+        all_models = pd.concat([report_df, all_other_datasets])
+    else:
+        all_models = report_df
+
+    all_models = all_models.sort_values('Test RMSLE', ascending=True)
+    all_models.to_csv(name, index=False)
+

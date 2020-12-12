@@ -1,0 +1,82 @@
+Model,HyperParemeters,Scaler,Test Size,Outlier Handling,Fit Time(s),Nr. of Components,Variance Explained,Test RMSLE
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.0,100,0.9996485242199988,0.13446719650272565
+LinearRegression,(),None,0.1,YeoJonson,0.022135257720947266,100,0.9999999999999793,0.15006112533926194
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.015615463256835938,70,0.9990791020234236,0.15413848463645333
+AdaBoostRegressor,(base_estimator=ElasticNet,StandardScaler,0.3,Replace,0.16924548149108887,100,0.9995604996139589,0.15496539540345763
+AdaBoostRegressor,(base_estimator=ElasticNet,StandardScaler,0.3,Replace,0.15363311767578125,70,0.9987200340006478,0.15581902238389986
+AdaBoostRegressor,(base_estimator=ElasticNet,StandardScaler,0.3,Replace,0.13152098655700684,50,0.9972477526636024,0.1558397984992777
+AdaBoostRegressor,(base_estimator=ElasticNet,StandardScaler,0.3,Replace,0.1439661979675293,60,0.9981348483342718,0.1559389004920301
+AdaBoostRegressor,(base_estimator=ElasticNet,StandardScaler,0.3,Replace,0.10029268264770508,40,0.9959217404776323,0.15920293679955455
+AdaBoostRegressor,(base_estimator=ElasticNet,StandardScaler,0.3,Replace,0.10024571418762207,30,0.9938012090253904,0.16260019807136783
+RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,1.9359338283538818,10,0.9886474273475415,0.16422806448069707
+RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,3.3665316104888916,20,0.9937913391581175,0.16438096096054927
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.0,60,0.9987594494228378,0.169525741164073
+RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,5.327929258346558,30,0.995834068699623,0.17246240480856126
+RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,6.608882427215576,40,0.9971399778394032,0.17594612824739023
+KNeighborsRegressor,"(algorithm='kd_tree', p=1.1, weights='distance')",StandardScaler,0.1,Replace,0.01562047004699707,70,0.9987563344349971,0.1787831349603766
+RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,7.61874532699585,50,0.9979753355603924,0.17898038679519374
+RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,12.099441051483154,70,0.9989735227640215,0.18081430211044563
+RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,9.191286325454712,60,0.9985599974977892,0.18117936693871436
+KNeighborsRegressor,"(algorithm='kd_tree', p=1.1, weights='distance')",StandardScaler,0.1,Replace,0.015627384185791016,50,0.9973271263304203,0.18418432857644204
+KNeighborsRegressor,"(algorithm='kd_tree', p=1.1, weights='distance')",StandardScaler,0.1,Replace,0.015623092651367188,60,0.9981819419987213,0.18456778185409717
+LinearRegression,(),None,0.1,YeoJonson,0.0,30,0.9999999999997448,0.1851392095755165
+RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,15.961064338684082,100,0.9996400100085989,0.18555377294372824
+LinearRegression,(),None,0.1,YeoJonson,0.015622615814208984,70,0.9999999999999413,0.18606822831701852
+GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,93.37020230293274,70,0.9991672791128303,0.18781799131326649
+KNeighborsRegressor,"(algorithm='kd_tree', p=1.1, weights='distance')",StandardScaler,0.1,Replace,0.01561737060546875,40,0.9960374573107212,0.18827099300217232
+KNeighborsRegressor,"(algorithm='kd_tree', p=1.1, weights='distance')",StandardScaler,0.1,Replace,0.015620708465576172,100,0.9995650706940878,0.18974006719249187
+AdaBoostRegressor,(base_estimator=ElasticNet,StandardScaler,0.3,Replace,0.162705659866333,20,0.9897509623730063,0.19044835879817867
+KNeighborsRegressor,"(algorithm='kd_tree', p=1.1, weights='distance')",StandardScaler,0.1,Replace,0.0,10,0.9824222496916979,0.192846618572223
+LinearRegression,(),None,0.1,YeoJonson,0.015616416931152344,50,0.9999999999998844,0.19402076354196704
+KNeighborsRegressor,"(algorithm='kd_tree', p=1.1, weights='distance')",StandardScaler,0.1,Replace,0.01562047004699707,30,0.9940043981528999,0.1942987254789247
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.0020339488983154297,30,0.9966956524806663,0.19552324066196136
+KNeighborsRegressor,"(algorithm='kd_tree', p=1.1, weights='distance')",StandardScaler,0.1,Replace,0.010203361511230469,20,0.9901942488542038,0.19555789826963202
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.015629291534423828,50,0.9983118880325538,0.19716234187515813
+LinearRegression,(),None,0.1,YeoJonson,0.0,40,0.9999999999998317,0.1980804287216932
+GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,44.684677839279175,30,0.996797223619453,0.20264242967609042
+AdaBoostRegressor,(base_estimator=ElasticNet,StandardScaler,0.3,Replace,0.12236833572387695,10,0.9816168940039908,0.20301116086433638
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.0,40,0.9976950593338672,0.203582733493206
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.0,20,0.9949802162451465,0.20509079594656815
+GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,54.00537633895874,40,0.9977453627297692,0.2056107581382585
+GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,76.96570229530334,60,0.9988469494239436,0.20625505753080406
+GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,32.78902626037598,20,0.9951138305174957,0.20725088702468092
+GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,136.79028725624084,100,0.9996901997170821,0.20831782001508692
+GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,64.92248964309692,50,0.9983896599700873,0.20839852732586706
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,1.7887330055236816,100,0.9999874786448468,0.21048671538289704
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,1.619654893875122,70,0.9999652916680134,0.21054839388372543
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,1.456735610961914,60,0.9999508577506979,0.21067368660602223
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,1.5192549228668213,40,0.999896285567085,0.2107250067645474
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,1.3747782707214355,50,0.9999294908880322,0.21078593774988635
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,1.735323190689087,30,0.9998397763336064,0.21104090730323224
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,2.222905158996582,20,0.9997289980540256,0.21780363226874078
+LinearRegression,(),None,0.1,YeoJonson,0.0020253658294677734,20,0.99999999999959,0.22639865921925886
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,0.7954437732696533,10,0.9993085303198016,0.22750788459718344
+GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,21.73820686340332,10,0.9914868738510548,0.23506318783347127
+LinearRegression,(),None,0.1,YeoJonson,0.015625,60,0.9999999999999183,0.23979325577388258
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,0.9334311485290527,2,0.9933603071827404,0.26893376485668674
+KNeighborsRegressor,"(algorithm='kd_tree', p=1.1, weights='distance')",StandardScaler,0.1,Replace,0.0,2,0.9601624023578204,0.27447826559884936
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.01562976837158203,10,0.991388512024219,0.28995735859882726
+RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,0.723792552947998,2,0.9588474441400788,0.2920356710367607
+AdaBoostRegressor,(base_estimator=ElasticNet,StandardScaler,0.3,Replace,0.06900548934936523,2,0.9580726535080556,0.32069219977016145
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.015621185302734375,2,0.9756210346038516,0.33438869592885984
+GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,7.6220879554748535,2,0.9757756271199589,0.3350858158068798
+LinearRegression,(),None,0.1,YeoJonson,0.0,2,0.9999999998557175,0.4328304965035666
+LinearRegression,(),None,0.1,YeoJonson,0.0,10,0.9999999999989319,0.4490585294064441
+MLPRegressor,"(activation='identity', alpha=0.1, hidden_layer_sizes=",None,0.3,Replace,1.3409347534179688,10,0.9989536277139063,1.876145633252459
+MLPRegressor,"(activation='identity', alpha=0.1, hidden_layer_sizes=",None,0.3,Replace,1.9908514022827148,20,0.9999988523442821,1.9209647298707402
+MLPRegressor,"(activation='identity', alpha=0.1, hidden_layer_sizes=",None,0.3,Replace,1.7041289806365967,40,0.9999996497633962,1.9358146074193563
+MLPRegressor,"(activation='identity', alpha=0.1, hidden_layer_sizes=",None,0.3,Replace,1.989232063293457,60,0.9999998365306876,1.9822009516910615
+MLPRegressor,"(activation='identity', alpha=0.1, hidden_layer_sizes=",None,0.3,Replace,1.0870590209960938,2,0.9457000750997436,1.9961912205989152
+MLPRegressor,"(activation='identity', alpha=0.1, hidden_layer_sizes=",None,0.3,Replace,1.8356122970581055,50,0.9999997649929115,2.0121649965464257
+MLPRegressor,"(activation='identity', alpha=0.1, hidden_layer_sizes=",None,0.3,Replace,2.1520276069641113,100,0.9999999625572596,2.015122234232334
+MLPRegressor,"(activation='identity', alpha=0.1, hidden_layer_sizes=",None,0.3,Replace,2.321324110031128,70,0.9999998864591597,2.0533392648932995
+MLPRegressor,"(activation='identity', alpha=0.1, hidden_layer_sizes=",None,0.3,Replace,1.3721556663513184,30,0.9999994691477577,2.0946817364275083

@@ -13,20 +13,21 @@ def best_models():
         AdaBoostRegressor(n_estimators=32, loss='exponential', learning_rate=0.01, base_estimator=ElasticNet()),
         LinearRegression(),
         KNeighborsRegressor(weights='distance', p=1.1, n_neighbors=5, algorithm='kd_tree'),
-        SVR(shrinking=False, kernel='linear', C=4)
+        SVR(shrinking=False, kernel='linear', C=4),
+        MLPRegressor(warm_start=False, solver='adam', learning_rate='adaptive',hidden_layer_sizes=(264,),alpha=0.1,activation='identity')
     ]
 
     best_scaler = [
-        'RobustScaler','MinMaxScaler','MinMaxScaler','StandardScaler','None','StandardScaler','None'
+        'RobustScaler','MinMaxScaler','MinMaxScaler','StandardScaler','None','StandardScaler','None','None'
     ]
 
 
     best_outlier_selection = [
-        'YeoJonson','Replace','YeoJonson','Replace','YeoJonson','Replace','Log'
+        'YeoJonson','Replace','YeoJonson','Replace','YeoJonson','Replace','Log','Replace'
     ]
 
     best_test_size = [
-        0.1,0.1,0.1,0.3,0.1,0.1,0.1
+        0.1,0.1,0.1,0.3,0.1,0.1,0.1,0.3
     ]
 
     return best_model, best_scaler, best_outlier_selection, best_test_size
