@@ -36,6 +36,7 @@ def transform_data(df):
                     })
 
     df['BsmtCond'] = df['BsmtCond'].astype('int64')
+    df['GarageQual'] = df['GarageQual'].astype('int64')
     # Turn some numbers to real categorical values
     df = df.replace({"MSSubClass": {20:"MSSC20",30:"MSSC30",40:"MSSC40",45:"MSSC45",50:"MSSC50",60:"MSSC60",70:"MSSC70",75:"MSSC75",
                                     80:"MSSC80",85:"MSSC85",90:"MSSC90",120:"MSSC120",150:"MSSC150",160:"MSSC160",180:"MSSC180",190:"MSSC190"}
@@ -45,6 +46,14 @@ def transform_data(df):
     dummy_features= ['MSSubClass','MSZoning','LotConfig','Neighborhood','Condition1','Condition2','BldgType','HouseStyle',
                      'RoofStyle','RoofMatl','Exterior1st','Exterior2nd','MasVnrType','Foundation','Heating','Electrical',
                      'GarageType','MiscFeature','SaleType','SaleCondition']
+
+    # dummy_features = ['MSSubClass', 'MSZoning', 'LotConfig', 'Neighborhood', 'Condition1', 'Condition2', 'BldgType',
+    #                   'HouseStyle','LotShape','LandContour','Utilities','LandSlope','ExterQual','ExterCond','BsmtQual',
+    #                   'RoofStyle', 'RoofMatl', 'Exterior1st', 'Exterior2nd', 'MasVnrType', 'Foundation', 'Heating','CentralAir',
+    #                   'Electrical','Alley','BsmtCond','BsmtExposure','BsmtFinType1','BsmtFinType2','HeatingQC','KitchenQual',
+    #                    'Functional','FireplaceQu','GarageFinish','GarageQual','GarageCond'   ,'PavedDrive' ,'PoolQC'   ,'Fence'  ,'Street',
+    #                   'GarageType', 'MiscFeature', 'SaleType', 'SaleCondition']
+
     df = pd.get_dummies(df,columns=dummy_features)
     df = df.set_index('Id')
     return df
@@ -131,6 +140,7 @@ def handle_outliers(df, method="Log", isTest = False):
             lower_value = df[col].quantile(0.025)
             upper_value = df[col].quantile(0.975)
 
+            np.random.seed(101)
             df_sorted = df_numeric.sort_values([col], ascending=[False])
             values_to_replace = df_sorted[(df_sorted[col] <= upper_value) & (df_sorted[col] >= lower_value)]
             top5percent = round(len(values_to_replace) * 0.025)
@@ -156,3 +166,75 @@ def handle_outliers(df, method="Log", isTest = False):
     df = pd.concat([transformed_numeric_df, df_other], axis=1)
 
     return df,list(df_numeric.columns)
+
+
+def extra_transformation(df):
+    df["SimplOverallQual"] = df.OverallQual.replace({1: 1, 2: 1, 3: 1,  # bad
+                                                           4: 2, 5: 2, 6: 2,  # average
+                                                           7: 3, 8: 3, 9: 3, 10: 3  # good
+                                                           })
+    df["SimplOverallCond"] = df.OverallCond.replace({1: 1, 2: 1, 3: 1,  # bad
+                                                           4: 2, 5: 2, 6: 2,  # average
+                                                           7: 3, 8: 3, 9: 3, 10: 3  # good
+                                                           })
+    df["SimplPoolQC"] = df.PoolQC.replace({1: 1, #bad
+                                           2: 2, 3: 2, #average
+                                           4: 3  # good
+                                                 })
+    df["SimplGarageCond"] = df.GarageCond.replace({1: 1, 2: 1, # bad
+                                                          3: 2, 4: 3, # average
+                                                          5: 3  # good
+                                                         })
+    df["SimplGarageQual"] = df.GarageQual.replace({1: 1, 2: 1, # bad
+                                                          3: 2, 4: 3, # average
+                                                          5: 3  # good
+                                                         })
+    df["SimplFireplaceQu"] = df.FireplaceQu.replace({1: 1, 2: 1,  # bad
+                                                            3: 2, 4: 3,  # average
+                                                            5: 3  # good
+                                                           })
+    df["SimplFireplaceQu"] = df.FireplaceQu.replace({1: 1,  2: 1, # bad
+                                                           3: 2,  4: 3, # average
+                                                           5: 3  # good
+                                                           })
+    df["SimplFunctional"] = df.Functional.replace({1: 1, 2: 1, 3: 2,  # bad
+                                                        4: 3, 5: 3, 6: 3, # average
+                                                          7: 4,  8: 4  # good
+
+                                                         })
+    df["SimplKitchenQual"] = df.KitchenQual.replace({1: 1, 2: 1, # bad
+                                                            3: 2, 4: 3, # average
+                                                            5: 3  # good
+                                                           })
+    df["SimplHeatingQC"] = df.HeatingQC.replace({1: 1, 2: 1,  # bad
+                                                        3: 2, 4: 3, # average
+                                                        5: 3  # good
+                                                       })
+    df["SimplBsmtFinType1"] = df.BsmtFinType1.replace({1: 1, 2: 1, # unfinished
+                                                              3: 2, 4: 2, # rec room
+                                                              5: 3, 6: 3  # living quarters
+                                                             })
+    df["SimplBsmtFinType2"] = df.BsmtFinType2.replace({1: 1, 2: 1, # unfinished
+                                                              3: 2, 4: 2,  # rec room
+                                                             5: 3, 6: 3  # living quarters
+                                                             })
+    df["SimplBsmtCond"] = df.BsmtCond.replace({1: 1, 2: 1, # bad
+                                                      3: 2, 4: 3, # average
+                                                      5: 3  # good
+                                                     })
+    df["SimplBsmtQual"] = df.BsmtQual.replace({1: 1, 2: 1, # bad
+                                                      3: 2, 4: 3, # average
+                                                      5: 3  # good
+                                                     })
+    df["SimplExterCond"] = df.ExterCond.replace({1: 1, 2: 1, # bad
+                                                        3: 2, 4: 3, # average
+                                                        5: 3  # good
+                                                       })
+    df["SimplExterQual"] = df.ExterQual.replace({1: 1, 2: 1, # bad
+                                                        3: 2, 4: 3, # average
+                                                        5: 3  # good
+                                                       })
+
+
+
+    return df

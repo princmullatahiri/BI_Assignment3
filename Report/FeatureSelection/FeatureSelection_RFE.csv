@@ -1,73 +1,181 @@
 Model,HyperParemeters,Scaler,Test Size,Outlier Handling,Fit Time(s),Top Attributes,Test RMSLE
+XGBRegressor,"(base_score=None, booster=None, colsample_bylevel=None,
+             colsample_bynode=None, colsample_bytree=0.6, gamma=None,
+             gpu_id=None, importance_type='gain', interaction_constraints=None,
+             learning_rate=0.1, max_delta_step=None, max_depth=6,
+             min_child_weight=3, missing=nan, monotone_constraints=None,
+             n_estimators=64, n_jobs=None, num_parallel_tree=None,
+             random_state=101, reg_alpha=None, reg_lambda=None,
+             scale_pos_weight=None, subsample=0.7, tree_method=None,
+             validate_parameters=None, verbosity=None)",MinMaxScaler,0.1,Log,4.673729419708252,50,0.11777587285046723
+XGBRegressor,"(base_score=None, booster=None, colsample_bylevel=None,
+             colsample_bynode=None, colsample_bytree=0.6, gamma=None,
+             gpu_id=None, importance_type='gain', interaction_constraints=None,
+             learning_rate=0.1, max_delta_step=None, max_depth=6,
+             min_child_weight=3, missing=nan, monotone_constraints=None,
+             n_estimators=64, n_jobs=None, num_parallel_tree=None,
+             random_state=101, reg_alpha=None, reg_lambda=None,
+             scale_pos_weight=None, subsample=0.7, tree_method=None,
+             validate_parameters=None, verbosity=None)",MinMaxScaler,0.1,Log,4.245702743530273,70,0.12698918697008849
+XGBRegressor,"(base_score=None, booster=None, colsample_bylevel=None,
+             colsample_bynode=None, colsample_bytree=0.6, gamma=None,
+             gpu_id=None, importance_type='gain', interaction_constraints=None,
+             learning_rate=0.1, max_delta_step=None, max_depth=6,
+             min_child_weight=3, missing=nan, monotone_constraints=None,
+             n_estimators=64, n_jobs=None, num_parallel_tree=None,
+             random_state=101, reg_alpha=None, reg_lambda=None,
+             scale_pos_weight=None, subsample=0.7, tree_method=None,
+             validate_parameters=None, verbosity=None)",MinMaxScaler,0.1,Log,4.9554054737091064,35,0.13052005416738047
 GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
-                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,435.77545523643494,25,0.13199276441613678
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,435.7754552364349,25,0.13199276441613678
+XGBRegressor,"(base_score=None, booster=None, colsample_bylevel=None,
+             colsample_bynode=None, colsample_bytree=0.6, gamma=None,
+             gpu_id=None, importance_type='gain', interaction_constraints=None,
+             learning_rate=0.1, max_delta_step=None, max_depth=6,
+             min_child_weight=3, missing=nan, monotone_constraints=None,
+             n_estimators=64, n_jobs=None, num_parallel_tree=None,
+             random_state=101, reg_alpha=None, reg_lambda=None,
+             scale_pos_weight=None, subsample=0.7, tree_method=None,
+             validate_parameters=None, verbosity=None)",MinMaxScaler,0.1,Log,4.472609519958496,60,0.13224960369531674
 GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
-                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,418.007807970047,20,0.13301762135347223
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,418.007807970047,20,0.13301762135347225
+XGBRegressor,"(base_score=None, booster=None, colsample_bylevel=None,
+             colsample_bynode=None, colsample_bytree=0.6, gamma=None,
+             gpu_id=None, importance_type='gain', interaction_constraints=None,
+             learning_rate=0.1, max_delta_step=None, max_depth=6,
+             min_child_weight=3, missing=nan, monotone_constraints=None,
+             n_estimators=64, n_jobs=None, num_parallel_tree=None,
+             random_state=101, reg_alpha=None, reg_lambda=None,
+             scale_pos_weight=None, subsample=0.7, tree_method=None,
+             validate_parameters=None, verbosity=None)",MinMaxScaler,0.1,Log,4.685475826263428,40,0.13328047611837113
 GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
-                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,443.4099671840668,35,0.13383041944650315
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,443.40996718406683,35,0.13383041944650315
 GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
                           min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,427.0628638267517,30,0.1356770479857806
 GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
-                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,408.88133573532104,50,0.13576384500675207
-RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,54.869866132736206,50,0.13660522192149582
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,408.881335735321,50,0.13576384500675207
+XGBRegressor,"(base_score=None, booster=None, colsample_bylevel=None,
+             colsample_bynode=None, colsample_bytree=0.6, gamma=None,
+             gpu_id=None, importance_type='gain', interaction_constraints=None,
+             learning_rate=0.1, max_delta_step=None, max_depth=6,
+             min_child_weight=3, missing=nan, monotone_constraints=None,
+             n_estimators=64, n_jobs=None, num_parallel_tree=None,
+             random_state=101, reg_alpha=None, reg_lambda=None,
+             scale_pos_weight=None, subsample=0.7, tree_method=None,
+             validate_parameters=None, verbosity=None)",MinMaxScaler,0.1,Log,5.055847883224487,15,0.1361079197269736
+RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,54.86986613273621,50,0.13660522192149582
 GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
                           min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,377.14615392684937,70,0.13677692476967235
 RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,57.049710273742676,35,0.13720408839338027
 RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,58.07137417793274,25,0.13721297467723212
-RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,53.386759996414185,20,0.13752030219422953
+RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,53.38675999641418,20,0.13752030219422953
 GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
-                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,416.04030108451843,40,0.13794322931878358
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,416.0403010845184,40,0.13794322931878358
 RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,53.77020001411438,40,0.13830712578163729
-RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,46.440629720687866,70,0.1392034788152353
+RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,46.44062972068786,70,0.1392034788152353
+XGBRegressor,"(base_score=None, booster=None, colsample_bylevel=None,
+             colsample_bynode=None, colsample_bytree=0.6, gamma=None,
+             gpu_id=None, importance_type='gain', interaction_constraints=None,
+             learning_rate=0.1, max_delta_step=None, max_depth=6,
+             min_child_weight=3, missing=nan, monotone_constraints=None,
+             n_estimators=64, n_jobs=None, num_parallel_tree=None,
+             random_state=101, reg_alpha=None, reg_lambda=None,
+             scale_pos_weight=None, subsample=0.7, tree_method=None,
+             validate_parameters=None, verbosity=None)",MinMaxScaler,0.1,Log,5.115680456161499,20,0.13953602197339957
 RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,55.916234254837036,30,0.1402735328469533
 RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,48.07994270324707,60,0.14051313226335627
-ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.2853515148162842,70,0.14209362111047677
+XGBRegressor,"(base_score=None, booster=None, colsample_bylevel=None,
+             colsample_bynode=None, colsample_bytree=0.6, gamma=None,
+             gpu_id=None, importance_type='gain', interaction_constraints=None,
+             learning_rate=0.1, max_delta_step=None, max_depth=6,
+             min_child_weight=3, missing=nan, monotone_constraints=None,
+             n_estimators=64, n_jobs=None, num_parallel_tree=None,
+             random_state=101, reg_alpha=None, reg_lambda=None,
+             scale_pos_weight=None, subsample=0.7, tree_method=None,
+             validate_parameters=None, verbosity=None)",MinMaxScaler,0.1,Log,4.854642391204834,25,0.14116325043604888
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.2853515148162842,70,0.14209362111047674
 GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
-                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,367.73733711242676,60,0.1424177587436188
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,367.7373371124268,60,0.1424177587436188
 GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
                           min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,534.2711427211761,10,0.14279910057106027
+XGBRegressor,"(base_score=None, booster=None, colsample_bylevel=None,
+             colsample_bynode=None, colsample_bytree=0.6, gamma=None,
+             gpu_id=None, importance_type='gain', interaction_constraints=None,
+             learning_rate=0.1, max_delta_step=None, max_depth=6,
+             min_child_weight=3, missing=nan, monotone_constraints=None,
+             n_estimators=64, n_jobs=None, num_parallel_tree=None,
+             random_state=101, reg_alpha=None, reg_lambda=None,
+             scale_pos_weight=None, subsample=0.7, tree_method=None,
+             validate_parameters=None, verbosity=None)",MinMaxScaler,0.1,Log,4.953662872314453,30,0.14312888034374358
 GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
                           min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,439.0916814804077,15,0.14541894020375898
 RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,68.00982332229614,15,0.14599115372354832
-ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.31636619567871094,60,0.14873738601409384
-RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,62.949872970581055,10,0.1507491032568445
-ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.34019899368286133,40,0.1601226341167798
-ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.32027649879455566,50,0.16267678382696155
+XGBRegressor,"(base_score=None, booster=None, colsample_bylevel=None,
+             colsample_bynode=None, colsample_bytree=0.6, gamma=None,
+             gpu_id=None, importance_type='gain', interaction_constraints=None,
+             learning_rate=0.1, max_delta_step=None, max_depth=6,
+             min_child_weight=3, missing=nan, monotone_constraints=None,
+             n_estimators=64, n_jobs=None, num_parallel_tree=None,
+             random_state=101, reg_alpha=None, reg_lambda=None,
+             scale_pos_weight=None, subsample=0.7, tree_method=None,
+             validate_parameters=None, verbosity=None)",MinMaxScaler,0.1,Log,5.056305646896362,10,0.1474357245820988
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.3163661956787109,60,0.14873738601409384
+RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,62.94987297058106,10,0.1507491032568445
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.3401989936828613,40,0.1601226341167798
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.3202764987945557,50,0.16267678382696155
 ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.32692646980285645,15,0.16278727841318671
 RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,63.52021408081055,5,0.16308026022474534
 ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.3299562931060791,30,0.1663841139413735
 GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
-                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,510.6738793849945,5,0.16798555751107339
+                          min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,510.6738793849945,5,0.1679855575110734
 ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.3014261722564697,20,0.17080957272702704
-ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.319805383682251,35,0.17655827782041464
+XGBRegressor,"(base_score=None, booster=None, colsample_bylevel=None,
+             colsample_bynode=None, colsample_bytree=0.6, gamma=None,
+             gpu_id=None, importance_type='gain', interaction_constraints=None,
+             learning_rate=0.1, max_delta_step=None, max_depth=6,
+             min_child_weight=3, missing=nan, monotone_constraints=None,
+             n_estimators=64, n_jobs=None, num_parallel_tree=None,
+             random_state=101, reg_alpha=None, reg_lambda=None,
+             scale_pos_weight=None, subsample=0.7, tree_method=None,
+             validate_parameters=None, verbosity=None)",MinMaxScaler,0.1,Log,5.328092098236084,5,0.1753290513988066
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.31980538368225103,35,0.17655827782041464
 ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.33202362060546875,25,0.17899769845971236
-ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.43636059761047363,10,0.17940573706200866
-ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.3701438903808594,5,0.19903829830646294
-SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,18.521979570388794,70,0.21061542639945519
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.4363605976104736,10,0.17940573706200866
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.3701438903808594,5,0.1990382983064629
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,18.521979570388797,70,0.2106154263994552
 GradientBoostingRegressor,"(learning_rate=0.2, loss='huber', max_depth=24,
                           min_samples_split=16, n_estimators=400)",MinMaxScaler,0.1,YeoJonson,498.92877674102783,1,0.22203938935342865
 RandomForestRegressor,"(max_depth=32, min_samples_split=8, n_estimators=200)",RobustScaler,0.1,YeoJonson,64.78502750396729,1,0.2224717517995917
-ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.37485408782958984,1,0.23990839997267283
-SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,18.129690408706665,50,0.24632958872267208
-SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,17.68096351623535,60,0.24648225926207967
-SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,18.860082626342773,40,0.24689332565815858
-SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,18.86025381088257,35,0.24821650578113186
-SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,18.670323133468628,30,0.24876817797366693
-SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,18.59991216659546,25,0.26933601296627163
+XGBRegressor,"(base_score=None, booster=None, colsample_bylevel=None,
+             colsample_bynode=None, colsample_bytree=0.6, gamma=None,
+             gpu_id=None, importance_type='gain', interaction_constraints=None,
+             learning_rate=0.1, max_delta_step=None, max_depth=6,
+             min_child_weight=3, missing=nan, monotone_constraints=None,
+             n_estimators=64, n_jobs=None, num_parallel_tree=None,
+             random_state=101, reg_alpha=None, reg_lambda=None,
+             scale_pos_weight=None, subsample=0.7, tree_method=None,
+             validate_parameters=None, verbosity=None)",MinMaxScaler,0.1,Log,5.226074457168579,1,0.22260720657862512
+ElasticNet,"(alpha=0.3, l1_ratio=0.95, warm_start=True)",MinMaxScaler,0.1,Replace,0.37485408782958973,1,0.23990839997267285
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,18.129690408706665,50,0.2463295887226721
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,17.68096351623535,60,0.2464822592620797
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,18.860082626342773,40,0.24689332565815855
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,18.860253810882572,35,0.24821650578113186
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,18.670323133468628,30,0.2487681779736669
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,18.599912166595463,25,0.26933601296627163
 SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,17.79976463317871,20,0.27826016850476265
 SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,17.762772798538208,15,0.2880187074175274
 SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,17.94170880317688,10,0.29688144077232176
 SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,21.075050115585327,5,0.3215567340528797
-SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,21.04506826400757,1,0.37716488860243275
+SVR,"(C=4, kernel='linear', shrinking=False)",None,0.1,Log,21.045068264007572,1,0.3771648886024328
 LinearRegression,(),None,0.1,YeoJonson,0.5803191661834717,30,0.3802797254609163
-LinearRegression,(),None,0.1,YeoJonson,0.6049261093139648,35,0.38703451307674386
-LinearRegression,(),None,0.1,YeoJonson,0.5851988792419434,25,0.39003664251037606
-LinearRegression,(),None,0.1,YeoJonson,0.560706615447998,15,0.39186575527053774
+LinearRegression,(),None,0.1,YeoJonson,0.6049261093139648,35,0.3870345130767439
+LinearRegression,(),None,0.1,YeoJonson,0.5851988792419434,25,0.3900366425103761
+LinearRegression,(),None,0.1,YeoJonson,0.5607066154479979,15,0.39186575527053774
 LinearRegression,(),None,0.1,YeoJonson,0.6201791763305664,5,0.3937418074087314
-LinearRegression,(),None,0.1,YeoJonson,0.5863626003265381,20,0.39452343237116805
-LinearRegression,(),None,0.1,YeoJonson,0.585798978805542,10,0.39579618623425966
-LinearRegression,(),None,0.1,YeoJonson,0.610034704208374,1,0.42950062824965607
+LinearRegression,(),None,0.1,YeoJonson,0.5863626003265381,20,0.3945234323711681
+LinearRegression,(),None,0.1,YeoJonson,0.585798978805542,10,0.3957961862342597
+LinearRegression,(),None,0.1,YeoJonson,0.610034704208374,1,0.4295006282496561
 LinearRegression,(),None,0.1,YeoJonson,0.5636985301971436,70,1.815002922461195
-LinearRegression,(),None,0.1,YeoJonson,0.5782859325408936,60,2.292846901200432
-LinearRegression,(),None,0.1,YeoJonson,0.590076208114624,40,2.396386143086653
+LinearRegression,(),None,0.1,YeoJonson,0.5782859325408936,60,2.2928469012004316
+LinearRegression,(),None,0.1,YeoJonson,0.590076208114624,40,2.3963861430866533
 LinearRegression,(),None,0.1,YeoJonson,0.5702168941497803,50,2.4719747088868376

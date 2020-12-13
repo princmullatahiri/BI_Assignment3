@@ -10,6 +10,7 @@ from sklearn.svm import SVR
 from sklearn.neural_network import MLPRegressor
 from sklearn.feature_selection import SelectKBest, RFE, f_regression
 from sklearn.decomposition import PCA
+from xgboost import XGBRegressor
 import numpy as np
 import pandas as pd
 import time
@@ -247,11 +248,35 @@ def MLPRegressor_model(X_train, X_test, y_train, y_test):
     best_parameters = mlp_search.best_params_
     best_score = abs(mlp_search.best_score_)
     fit_time = end - start
-    # print(fit_time)
-    # print(best_parameters)
-    # print(best_score)
-    # print(result)
     return best_parameters, best_score, result, fit_time
+
+def XGBRegressor_model(X_train, X_test, y_train, y_test):
+    # XGBRegressor
+
+    param = {
+        'learning_rate': [0.001, 0.01, 0.1],
+        'max_depth': [2, 3, 6, 12, 24, 48],
+        'min_child_weight': [1, 3, 5],
+        'subsample': [0.5, 0.6, 0.7],
+        'colsample_bytree': [0.5, 0.6, 0.7],
+        'n_estimators' : [16, 32, 64, 100, 200, 400, 500],
+        'objective': ['reg:squarederror']
+    }
+
+    xgb = XGBRegressor(random_state=101)
+    scorer = make_scorer(rmsle, greater_is_better=False)
+    start = time.time()
+    xgb_search = RandomizedSearchCV(xgb, param, n_iter=10, cv=10, n_jobs=-1, random_state=101,scoring=scorer)
+    xgb_search.fit(X_train, y_train)
+    end = time.time()
+    y_pred = xgb_search.predict(X_test)
+    result = rmsle(y_test, y_pred)
+    best_parameters = xgb_search.best_params_
+    best_score = abs(xgb_search.best_score_)
+    fit_time = end - start
+    return best_parameters, best_score, result, fit_time
+
+
 
 
 
@@ -266,8 +291,8 @@ def get_result_for_models(df, scaler, numerical_features, test_size, outlier_han
     #Done: KNeighnorsRegressor_model, ElasticNet_model, RandomForestRegressor_model, SVR_model, GradientBoostingRegressor_model, AdaBoostRegressor_model, LinearRegression_model
     #TODO:  MLPRegressor_model
     all_models = [ElasticNet_model, RandomForestRegressor_model,GradientBoostingRegressor_model,
-                  AdaBoostRegressor_model,KNeighnorsRegressor_model,SVR_model,MLPRegressor_model, LinearRegression_model]
-    all_models = [SVR_model]
+                  AdaBoostRegressor_model,KNeighnorsRegressor_model,SVR_model,MLPRegressor_model, LinearRegression_model, XGBRegressor_model]
+    all_models = [XGBRegressor_model]
 
     X_train, X_test, y_train, y_test = train_test_split_data(df, size=test_size)
 
@@ -301,9 +326,8 @@ def get_result_for_models(df, scaler, numerical_features, test_size, outlier_han
     all_models.to_csv(name, index=False)
 
 def create_submission_for_top3_models(test, train, nftrain, scaler, index):
-#{'n_estimators': 32, 'loss': 'exponential', 'learning_rate': 0.01, 'base_estimator': ElasticNet()}
-#{'warm_start': True, 'selection': 'cyclic', 'l1_ratio': 0.9500000000000001, 'alpha': 0.30000000000000004}
-    model = LinearRegression()
+
+    model = XGBRegressor()#random_state=101,subsample=0.7, objective='reg:squarederror', n_estimators=64, min_child_weight=3, max_depth=6, learning_rate=0.1, colsample_bytree=0.6)
 
     X_train = train.drop('SalePrice', axis=1)
     y_train = train[['SalePrice']]
@@ -312,6 +336,7 @@ def create_submission_for_top3_models(test, train, nftrain, scaler, index):
 
 
     X_train, X_test = drop_columns_not_in_test(X_train, X_test)
+
 
     if scaler != "None":
         X_train, X_test = scale_data(X_train, X_test, numerical=nftrain, scaler=scaler)
@@ -448,8 +473,8 @@ def feature_selection_RFE():
 
 def create_submission_for_bestfeatures(test, train, nftrain, index):
     best_model, best_scaler, best_outlier_selection, best_test_size = best_models()
-    model = best_model[1]
-    scaler = best_scaler[1]
+    model = best_model[0]
+    scaler = best_scaler[0]
 
     X_train = train.drop('SalePrice', axis=1)
     y_train = train[['SalePrice']]
@@ -463,7 +488,7 @@ def create_submission_for_bestfeatures(test, train, nftrain, index):
         X_train, X_test = scale_data(X_train, X_test, numerical=nftrain, scaler=scaler)
 
     start = time.time()
-    rfe = RFE(estimator=model, n_features_to_select=70, step=15)
+    rfe = RFE(estimator=model, n_features_to_select=50, step=15)
     rfe.fit(X_train, y_train)
     end = time.time()
     y_pred = rfe.predict(X_test)
@@ -477,7 +502,7 @@ def create_submission_for_bestfeatures(test, train, nftrain, index):
     submit_df = pd.DataFrame(data=data)
 
 
-    submit_df.to_csv('../Submissions/ElasticNet_top70features.csv', index=False)
+    submit_df.to_csv('../Submissions/RandomForestRegressor_top50features.csv', index=False)
 
 def pca_reduction(plot=False):
 
@@ -516,7 +541,7 @@ def pca_reduction(plot=False):
             data.append(new_val)
             print('Model:' + str(mdl[0]) + ', Top:' + str(to_try[i]) + ', Time:' + str(fit_time))
             if plot and i == 2:
-                plot_pca(X_test, y_pred)
+                plot_pca(X_test, y_pred, mdl[0])
 
     report_df = pd.DataFrame(data=data)
     name = '../Report/FeatureSelection/DimensionalityReduction_PCA.csv'

@@ -29,6 +29,7 @@ def mean_fit_time():
     plt.title('Model Average Fit Time with 10-Fold CV')
     plt.xlabel('Model')
     plt.ylabel('Fit Time (s)')
+    plt.savefig('../visualizations/Results/score_models_fit_time.png')
     plt.show()
 
 
@@ -70,6 +71,7 @@ def model_result_scaler():
     plt.xlabel('Model')
     plt.ylabel('RMSLE')
     ax.legend()
+    plt.savefig('../visualizations/Results/score_models_scalers.png')
     plt.show()
 
 
@@ -110,6 +112,47 @@ def model_result_outlier():
     plt.xlabel('Model')
     plt.ylabel('RMSLE')
     ax.legend()
+    plt.savefig('../visualizations/Results/score_model_outlier_handling.png')
+    plt.show()
+
+
+def model_result_testsize():
+    df_models = pd.read_csv('../Report/Model/Model Performances.csv')
+
+    list_of_models = list(df_models.Model.unique())
+    testsize = list(df_models['Test Size'].unique())
+
+    barWidth = 0.20
+    r1 = np.arange(len(list_of_models))
+    r2 = [x + barWidth for x in r1]
+    r3 = [x + barWidth for x in r2]
+
+    x_val = [r1,r2,r3]
+
+
+
+    fig, ax = plt.subplots()
+
+
+    for i in range(0,len(testsize)):
+        tsts = testsize[i]
+        mean_result = []
+        for j in range(0, len(list_of_models)):
+            mdl = list_of_models[j]
+            df = df_models[(df_models.Model == mdl) & (df_models['Test Size'] == tsts)]
+            mean = df['Test RMSLE'].mean()
+            mean_result.append(mean)
+        ax.bar(x_val[i], mean_result, barWidth, label=tsts)
+
+    plt.xticks([r + barWidth for r in range(len(list_of_models))], list_of_models)
+
+    plt.xticks(rotation='vertical')
+    plt.title('Model Average Score for different Test Sizes')
+
+    plt.xlabel('Model')
+    plt.ylabel('RMSLE')
+    ax.legend()
+    plt.savefig('../visualizations/Results/score_models_test_size.png')
     plt.show()
 
 
@@ -150,6 +193,7 @@ def model_result_outlier_scaler(model):
     plt.xlabel('Scaler')
     plt.ylabel('RMSLE')
     ax.legend()
+    plt.savefig('../visualizations/Results/score_'+model+'_outlier_scaler.png')
     plt.show()
 
 
@@ -192,6 +236,7 @@ def best_model_kBest():
     plt.xlabel('Model')
     plt.ylabel('RMSLE')
     ax.legend(bbox_to_anchor=(1.05, -0.16))
+    plt.savefig('../visualizations/Results/score_models_kBest.png')
     plt.show()
 
 
@@ -232,6 +277,7 @@ def best_model_RFE():
     plt.xlabel('Model')
     plt.ylabel('RMSLE')
     ax.legend()
+    plt.savefig('../visualizations/Results/score_modelsRFE.png')
     plt.show()
 
 def best_model_PCA():
@@ -272,4 +318,64 @@ def best_model_PCA():
     plt.xlabel('Model')
     plt.ylabel('RMSLE')
     ax.legend(bbox_to_anchor=(1.05, -0.16))
+    plt.savefig('../visualizations/Results/score_models_PCA.png')
+    plt.show()
+
+
+def actual_result_in_competition():
+    list_of_models = ['AdaBoostRegressor','GradientBoostingRegressor','KNeighnorsRegressor','RandomForestRegressor','ElasticNet','XGBRegressor']
+    result_in_test = [0.1529,0.1381,0.1696,0.1366,0.1342, 0.12809]
+    result_in_competition = [0.15956,0.39244,0.17773, 0.23571, 0.15423, 0.1472]
+
+    barWidth = 0.35
+    r1 = np.arange(len(list_of_models))
+    r2 = [x + barWidth for x in r1]
+
+
+
+    fig, ax = plt.subplots()
+
+
+    ax.bar(r1, result_in_test, barWidth, label='Test Result')
+    ax.bar(r2, result_in_competition, barWidth, label='Competition Result')
+
+    plt.xticks([r + barWidth for r in range(len(list_of_models))], list_of_models)
+
+    plt.xticks(rotation='vertical')
+    plt.title('Model Score in Competition')
+
+    plt.xlabel('Model')
+    plt.ylabel('RMSLE')
+    ax.legend()
+    plt.savefig('../visualizations/Results/score_competition.png')
+    plt.show()
+
+
+
+def result_in_competition_feature_selection():
+    list_of_models = ['ElasticNet/70','GradientBoostingRegressor/25','XGBRegressor/50','RandomForestRegressor/50']
+    result_with_feature_selection = [0.15500,0.34636,0.14371,0.24375]
+    result_in_competition = [0.15423,0.39244,0.14720,0.23571]
+
+    barWidth = 0.35
+    r1 = np.arange(len(list_of_models))
+    r2 = [x + barWidth for x in r1]
+
+
+
+    fig, ax = plt.subplots()
+
+
+    ax.bar(r1, result_with_feature_selection, barWidth, label='With Feature Selection')
+    ax.bar(r2, result_in_competition, barWidth, label='Without Feature Selection')
+
+    plt.xticks([r + barWidth for r in range(len(list_of_models))], list_of_models)
+
+    plt.xticks(rotation='vertical')
+    plt.title('Model Score in Competition with/without Feature Selection (RFE)')
+
+    plt.xlabel('Model')
+    plt.ylabel('RMSLE')
+    ax.legend()
+    plt.savefig('../visualizations/Results/score_competition_feature_selection.png')
     plt.show()
