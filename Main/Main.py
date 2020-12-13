@@ -6,14 +6,26 @@ from VisualizationOfResult import *
 import warnings
 warnings.filterwarnings("ignore")
 #
-df = pd.read_csv('../data/train.csv')
-most_expensive_neighbourhoods(df)
+# df = pd.read_csv('../data/train.csv')
+# # plot_percentage_of_missing_values(df)
+# # most_expensive_neighbourhoods(df)
 # df = handle_missing_values(df)
-# # plot_outliers(df, 'GrLivArea')
-# df, numerical_features = handle_outliers(df, method='Replace')
+#
+# best_model, best_scaler, best_outlier_selection, best_test_size = best_models(i=8)
+#
+# # # plot_outliers(df, 'GrLivArea')
+# df, numerical_features = handle_outliers(df, method=best_outlier_selection)
 # df = transform_data(df)
 # #plot_outliers(df, 'GrLivArea')
-# para_cords(df)
+# # para_cords(df)
+#
+# X_train, X_test, y_train, y_test = train_test_split_data(df, size=best_test_size)
+# X_train, X_test = scale_data(X_train, X_test, numerical=numerical_features, scaler=best_scaler)
+#
+# best_model.fit(X_train,y_train)
+# y_pred = best_model.predict(X_test)
+# result = rmsle(y_test, y_pred)
+# print(result)
 
 
 
@@ -66,7 +78,8 @@ scalers = ['None', 'StandardScaler', 'RobustScaler', 'MinMaxScaler']
 # test = handle_missing_values(test, isTest=True)
 # test, numerical_features1 = handle_outliers(test, method='YeoJonson', isTest = True)
 # test = transform_data(test)
-# # create_submission_for_top3_models(test, df, numerical_features, 'MinMaxScaler', index)
+# plot_percentage_of_missing_values(test)
+# create_submission_for_top3_models(test, df, numerical_features, 'MinMaxScaler', index)
 #
 # create_submission_for_bestfeatures(test, df, numerical_features, index)
 #

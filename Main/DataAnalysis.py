@@ -22,7 +22,7 @@ def plot_percentage_of_missing_values(df):
     plt.title('Columns with Missing Values')
     plt.xlabel('Missing Values')
     plt.ylabel('Percentage of Missing Values')
-    plt.savefig('../visualizations/Data Analysis/missing_values_percentage.png')
+    #plt.savefig('../visualizations/Data Analysis/missing_values_percentage.png')
     plt.show()
     return missing_val_dict
 

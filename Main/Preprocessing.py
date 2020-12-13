@@ -42,6 +42,7 @@ def transform_data(df):
                                     80:"MSSC80",85:"MSSC85",90:"MSSC90",120:"MSSC120",150:"MSSC150",160:"MSSC160",180:"MSSC180",190:"MSSC190"}
                      })
 
+
     # Convert categorical variable into dummy/indicator variables.
     dummy_features= ['MSSubClass','MSZoning','LotConfig','Neighborhood','Condition1','Condition2','BldgType','HouseStyle',
                      'RoofStyle','RoofMatl','Exterior1st','Exterior2nd','MasVnrType','Foundation','Heating','Electrical',
@@ -60,33 +61,51 @@ def transform_data(df):
 
 
 def handle_missing_values(df, isTest=False):
-    #These features the NAN represent when they dont have Alley,Fence, Pool etc.
-    df.loc[:, "Alley"] = df.loc[:, "Alley"].fillna(0)
-    df.loc[:, "MasVnrType"] = df.loc[:, "MasVnrType"].fillna("None")
-    df.loc[:, "MasVnrArea"] = df.loc[:, "MasVnrArea"].fillna(0)
-    df.loc[:, "BsmtQual"] = df.loc[:, "BsmtQual"].fillna(0)
-    df.loc[:, "BsmtCond"] = df.loc[:, "BsmtCond"].fillna(0)
-    df.loc[:, "BsmtExposure"] = df.loc[:, "BsmtExposure"].fillna(0)
-    df.loc[:, "BsmtFinType1"] = df.loc[:, "BsmtFinType1"].fillna(0)
-    df.loc[:, "BsmtFinType2"] = df.loc[:, "BsmtFinType2"].fillna(0)
-    df.loc[:, "FireplaceQu"] = df.loc[:, "FireplaceQu"].fillna(0)
-    df.loc[:, "GarageType"] = df.loc[:, "GarageType"].fillna(0)
-    df.loc[:, "GarageYrBlt"] = df.loc[:, "GarageYrBlt"].fillna(0)
-    df.loc[:, "GarageFinish"] = df.loc[:, "GarageFinish"].fillna(0)
-    df.loc[:, "GarageQual"] = df.loc[:, "GarageQual"].fillna(0)
-    df.loc[:, "GarageCond"] = df.loc[:, "GarageCond"].fillna(0)
-    df.loc[:, "PoolQC"] = df.loc[:, "PoolQC"].fillna(0)
-    df.loc[:, "Fence"] = df.loc[:, "Fence"].fillna(0)
-    df.loc[:, "PoolQC"] = df.loc[:, "PoolQC"].fillna(0)
-    df.loc[:, "MiscFeature"] = df.loc[:, "MiscFeature"].fillna("None")
+    #BsmtQual, BsmtCond, BsmtExposure, BsmtFinType2 fill only if BsmtFinType1 is NA
+    fill_for_bsmt = ['BsmtQual','BsmtCond','BsmtExposure','BsmtFinType2']
+    for i in range(0, len(fill_for_bsmt)):
+        df.loc[(~df.BsmtFinType1.isnull()), fill_for_bsmt[i]] = df.loc[(~df.BsmtFinType1.isnull()), fill_for_bsmt[i]].fillna(df[fill_for_bsmt[i]].value_counts().index[1])
+
+    # GarageYrBlt, GarageFinish, GarageQual, GarageCond fill only if GarageType NA
+    fill_for_garage = ['GarageYrBlt','GarageFinish','GarageQual','GarageCond']
+    for i in range(0, len(fill_for_garage)):
+        df.loc[(~df.GarageType.isnull()), fill_for_garage[i]] = df.loc[(~df.GarageType.isnull()), fill_for_garage[i]].fillna(df[fill_for_garage[i]].value_counts().index[1])
+
+    df.loc[:, 'MasVnrType'] = df.loc[:, 'MasVnrType'].fillna(df.MasVnrType.value_counts().index[0])
+    df.loc[:, 'MasVnrArea'] = df.loc[:, 'MasVnrArea'].fillna(df.MasVnrArea.median())
+    df.loc[:, 'MiscFeature'] = df.loc[:, 'MiscFeature'].fillna("None")
+
+    # These features the NAN represent when they dont have Alley,Fence, Pool etc.
+    fill_with_zero_cols_train = ['Alley', 'MasVnrArea', 'BsmtQual', 'BsmtCond', 'BsmtExposure', 'BsmtFinType1','BsmtFinType2',
+                                 'FireplaceQu', 'GarageType', 'GarageYrBlt', 'GarageFinish', 'GarageQual', 'GarageCond','PoolQC','Fence']
+    for i in range(0, len(fill_with_zero_cols_train)):
+        df.loc[:, fill_with_zero_cols_train[i]] = df.loc[:, fill_with_zero_cols_train[i]].fillna(0)
+
+
+
+
     if isTest == True:
-        df = df.fillna(0)
-    # df.loc[:, "BsmtFinSF1"] = df.loc[:, "BsmtFinSF1"].fillna(0)
+        fill_with_zero_cols_test = ['BsmtFinSF1','BsmtFinSF2','BsmtUnfSF','TotalBsmtSF','BsmtFullBath','BsmtHalfBath']
+        for i in range(0, len(fill_with_zero_cols_test)):
+            df.loc[:, fill_with_zero_cols_test[i]] = df.loc[:, fill_with_zero_cols_test[i]].fillna(0)
+
+        df.loc[:, 'GarageCars'] = df.loc[:, 'GarageCars'].fillna(df[df.GarageType == 'Detchd'].GarageCars.median())
+        df.loc[:, 'GarageArea'] = df.loc[:, 'GarageArea'].fillna(df[df.GarageType == 'Detchd'].GarageArea.median())
+        df.loc[:, 'KitchenQual'] = df.loc[:, 'KitchenQual'].fillna(df[df.KitchenAbvGr == 1].KitchenQual.value_counts().index[0])
+        df.loc[:, 'Utilities'] = df.loc[:, 'Utilities'].fillna(df.Utilities.value_counts().index[0])
+        df.loc[:, 'Functional'] = df.loc[:, 'Functional'].fillna(df.Functional.value_counts().index[0])
+
+        df.loc[:, 'MSZoning'] = df.loc[:, 'MSZoning'].fillna(df[df.Neighborhood == 'IDOTRR'].MSZoning.value_counts().index[0])
+        df.loc[:, 'Exterior1st'] = df.loc[:, 'Exterior1st'].fillna(df.Exterior1st.value_counts().index[0])
+        df.loc[:, 'Exterior2nd'] = df.loc[:, 'Exterior2nd'].fillna(df.Exterior2nd.value_counts().index[0])
+        df.loc[:, 'SaleType'] = df.loc[:, 'SaleType'].fillna(df.SaleType.value_counts().index[0])
     #Since only one row has missing value for Electricity drop it:
     df = df[df.Id != 1380]
 
     #Drop column LotFrontage since it contains more than 15% missing values which whould affect our algorithm if we try to fill them
     df = df.drop('LotFrontage', axis = 1)
+
+
 
     return df
 
