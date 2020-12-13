@@ -1,0 +1,3 @@
+pip install pydot
+pip install pydotplus
+pip install graphviz

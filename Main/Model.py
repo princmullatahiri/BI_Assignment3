@@ -277,6 +277,57 @@ def XGBRegressor_model(X_train, X_test, y_train, y_test):
     return best_parameters, best_score, result, fit_time
 
 
+def train_neural_network(test, train, nftrain, scaler, index):
+    from tensorflow.keras import Sequential
+    from tensorflow.keras.layers import Dense, Dropout
+    from numpy.random import seed
+    from VisualizationOfResult import plot_curve_neural_network
+    from tensorflow.keras.utils import plot_model
+    import tensorflow
+    seed(101)
+    tensorflow.random.set_seed(101)
+
+    X_train = train.drop('SalePrice', axis=1)
+    y_train = train[['SalePrice']]
+    X_test = test
+
+    X_train, X_test = drop_columns_not_in_test(X_train, X_test)
+
+    if scaler != "None":
+        X_train, X_test = scale_data(X_train, X_test, numerical=nftrain, scaler=scaler)
+
+    X_tr, X_val, y_tr, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=100)
+
+
+    model = Sequential()
+    model.add(Dense(80,kernel_initializer='he_normal', input_shape=(X_tr.shape[1],)))
+    model.add(Dropout(0.2))
+    model.add(Dense(80, kernel_initializer='he_normal'))
+    model.add(Dropout(0.05))
+    model.add(Dense(80, kernel_initializer='he_normal'))
+    model.add(Dropout(0.2))
+    model.add(Dense(8, kernel_initializer='he_normal'))
+    model.add(Dense(150, kernel_initializer='he_normal'))
+    model.add(Dropout(0.2))
+    model.add(Dense(20, kernel_initializer='he_normal'))
+    model.add(Dropout(0.2))
+    model.add(Dense(1,))
+    model.compile(optimizer='adam', loss='mse', metrics=['mae'])
+    model.summary()
+    start = time.time()
+    model.fit(X_tr, y_tr, epochs=350, batch_size=64, verbose=2, validation_data=(X_val, y_val))
+    end = time.time()
+    fit_time = end - start
+    print(fit_time)
+
+    y_pred = model.predict(X_test)
+    data = {
+        'Id': index,
+        'SalePrice': list(y_pred)
+    }
+    submit_df = pd.DataFrame(data=data)
+
+    submit_df.to_csv('../Submissions/KerasNeuralNetwork.csv', index=False)
 
 
 

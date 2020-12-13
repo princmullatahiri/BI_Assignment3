@@ -323,9 +323,9 @@ def best_model_PCA():
 
 
 def actual_result_in_competition():
-    list_of_models = ['AdaBoostRegressor','GradientBoostingRegressor','KNeighnorsRegressor','RandomForestRegressor','ElasticNet','XGBRegressor']
-    result_in_test = [0.1529,0.1381,0.1696,0.1366,0.1342, 0.12809]
-    result_in_competition = [0.15956,0.39244,0.17773, 0.23571, 0.15423, 0.1472]
+    list_of_models = ['AdaBoostRegressor','GradientBoostingRegressor','KNeighnorsRegressor','RandomForestRegressor','ElasticNet','XGBRegressor','KerasNeuralNetwork']
+    result_in_test = [0.1529,0.1381,0.1696,0.1366,0.1342, 0.12809, 0.1571]
+    result_in_competition = [0.15956,0.39244,0.17773, 0.23571, 0.15423, 0.1472, 0.20947]
 
     barWidth = 0.35
     r1 = np.arange(len(list_of_models))
@@ -379,3 +379,15 @@ def result_in_competition_feature_selection():
     ax.legend()
     plt.savefig('../visualizations/Results/score_competition_feature_selection.png')
     plt.show()
+
+
+def plot_curve_neural_network(history):
+    plt.title('Learning Curves')
+    plt.xlabel('Epoch')
+    plt.ylabel('MSE')
+    plt.plot(history.history['loss'], label='train')
+    plt.plot(history.history['val_loss'], label='val')
+    plt.legend()
+    plt.savefig('../visualizations/Results/curve_neural_network.png')
+    plt.show()
+

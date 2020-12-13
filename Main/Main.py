@@ -10,7 +10,7 @@ warnings.filterwarnings("ignore")
 # # plot_percentage_of_missing_values(df)
 # # most_expensive_neighbourhoods(df)
 # df = handle_missing_values(df)
-#
+# #
 # best_model, best_scaler, best_outlier_selection, best_test_size = best_models(i=8)
 #
 # # # plot_outliers(df, 'GrLivArea')
@@ -21,6 +21,7 @@ warnings.filterwarnings("ignore")
 #
 # X_train, X_test, y_train, y_test = train_test_split_data(df, size=best_test_size)
 # X_train, X_test = scale_data(X_train, X_test, numerical=numerical_features, scaler=best_scaler)
+
 #
 # best_model.fit(X_train,y_train)
 # y_pred = best_model.predict(X_test)
@@ -70,14 +71,15 @@ scalers = ['None', 'StandardScaler', 'RobustScaler', 'MinMaxScaler']
 
 # df = pd.read_csv('../data/train.csv')
 # df = handle_missing_values(df)
-# df, numerical_features = handle_outliers(df, method='YeoJonson')
+# df, numerical_features = handle_outliers(df, method='Log')
 # df = transform_data(df)
 #
 # test = pd.read_csv('../data/test.csv')
 # index = list(test.Id)
 # test = handle_missing_values(test, isTest=True)
-# test, numerical_features1 = handle_outliers(test, method='YeoJonson', isTest = True)
+# test, numerical_features1 = handle_outliers(test, method='Log', isTest = True)
 # test = transform_data(test)
+# train_neural_network(test, df, numerical_features, 'MinMaxScaler', index)
 # plot_percentage_of_missing_values(test)
 # create_submission_for_top3_models(test, df, numerical_features, 'MinMaxScaler', index)
 #
