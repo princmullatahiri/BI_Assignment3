@@ -367,7 +367,7 @@ def get_result_for_models(df, scaler, numerical_features, test_size, outlier_han
 
     name = '../Report/Model/Model Performances.csv'
 
-    if sum(1 for _ in Path("../Report/Model/").glob('**/*.csv')) != 0:
+    if sum(1 for _ in Path("../Report/Model/").glob('Model Performances.csv')) != 0:
         all_other_datasets = pd.read_csv('../Report/Model/Model Performances.csv')
         all_models = pd.concat([report_df, all_other_datasets])
     else:
@@ -378,8 +378,7 @@ def get_result_for_models(df, scaler, numerical_features, test_size, outlier_han
 
 def create_submission_for_top3_models(test, train, nftrain, scaler, index):
 
-    model = XGBRegressor()#random_state=101,subsample=0.7, objective='reg:squarederror', n_estimators=64, min_child_weight=3, max_depth=6, learning_rate=0.1, colsample_bytree=0.6)
-
+    best_model, best_scaler, best_outlier_selection, best_test_size = best_models(i=8)
     X_train = train.drop('SalePrice', axis=1)
     y_train = train[['SalePrice']]
     X_test = test
@@ -393,9 +392,9 @@ def create_submission_for_top3_models(test, train, nftrain, scaler, index):
         X_train, X_test = scale_data(X_train, X_test, numerical=nftrain, scaler=scaler)
 
     start = time.time()
-    model.fit(X_train, y_train)
+    best_model.fit(X_train, y_train)
     end = time.time()
-    y_pred = model.predict(X_test)
+    y_pred = best_model.predict(X_test)
     fit_time = end - start
     print(fit_time)
 
@@ -406,7 +405,7 @@ def create_submission_for_top3_models(test, train, nftrain, scaler, index):
     submit_df = pd.DataFrame(data=data)
 
 
-    submit_df.to_csv('../Submissions/XGBRegressor.csv', index=False)
+    submit_df.to_csv('../Submissions/XGBAllDummy.csv', index=False)
 
 
 
@@ -606,3 +605,94 @@ def pca_reduction(plot=False):
     all_models = all_models.sort_values('Test RMSLE', ascending=True)
     all_models.to_csv(name, index=False)
 
+def all_dummy_encoding(alldummy=False):
+    best_model, best_scaler, best_outlier_selection, best_test_size = best_models()
+    data = []
+    for i in range(0,len(best_model)):
+        df = pd.read_csv('../data/train.csv')
+        df = handle_missing_values(df)
+        df, numerical_features = handle_outliers(df, method=best_outlier_selection[i])
+        df = transform_data(df, alldummy=alldummy)
+        X_train, X_test, y_train, y_test = train_test_split_data(df, size=best_test_size[i])
+
+        if best_scaler[i] != "None":
+            X_train, X_test = scale_data(X_train, X_test, numerical=numerical_features, scaler=best_scaler[i])
+
+
+
+        model = best_model[i]
+
+        model.fit(X_train, y_train)
+
+        y_pred = model.predict(X_test)
+
+        result = rmsle(y_test, y_pred)
+
+        new_model = {'Model': str(model).split('(')[0],
+                         'Scaler': best_scaler[i],
+                         'Test Size': best_test_size[i], 'Outlier Handling': best_outlier_selection[i],
+                         'RMSLE': result,
+                         'allDummy': alldummy,
+        }
+        data.append(new_model)
+        print(str(model).split('(')[0])
+
+    report_df = pd.DataFrame(data=data)
+
+    name = '../Report/Model/TransformationPerformances.csv'
+
+    if sum(1 for _ in Path("../Report/Model/").glob('TransformationPerformances.csv')) != 0:
+        all_other_datasets = pd.read_csv('../Report/Model/TransformationPerformances.csv')
+        all_models = pd.concat([report_df, all_other_datasets])
+    else:
+        all_models = report_df
+
+    all_models = all_models.sort_values('RMSLE', ascending=True)
+    all_models.to_csv(name, index=False)
+
+
+def other_measures():
+    best_model, best_scaler, best_outlier_selection, best_test_size = best_models()
+    data = []
+    for i in range(0,len(best_model)):
+        df = pd.read_csv('../data/train.csv')
+        df = handle_missing_values(df)
+        df, numerical_features = handle_outliers(df, method=best_outlier_selection[i])
+        df = transform_data(df, alldummy=False)
+        X_train, X_test, y_train, y_test = train_test_split_data(df, size=best_test_size[i])
+
+        if best_scaler[i] != "None":
+            X_train, X_test = scale_data(X_train, X_test, numerical=numerical_features, scaler=best_scaler[i])
+
+
+
+        model = best_model[i]
+
+        model.fit(X_train, y_train)
+
+        y_pred = model.predict(X_test)
+
+
+        new_model = {'Model': str(model).split('(')[0],
+                         'Scaler': best_scaler[i],
+                         'Test Size': best_test_size[i], 'Outlier Handling': best_outlier_selection[i],
+                         'RMSLE': rmsle(y_test, y_pred),
+                         'RMSE': np.sqrt(mean_squared_error(y_test, y_pred)),
+                         'MAE' : mean_absolute_error(y_test, y_pred),
+                         'R2' : r2_score(y_test, y_pred)
+        }
+        data.append(new_model)
+        print(str(model).split('(')[0])
+
+    report_df = pd.DataFrame(data=data)
+
+    name = '../Report/Model/OtherMeasures.csv'
+
+    if sum(1 for _ in Path("../Report/Model/").glob('OtherMeasures.csv')) != 0:
+        all_other_datasets = pd.read_csv('../Report/Model/OtherMeasures.csv')
+        all_models = pd.concat([report_df, all_other_datasets])
+    else:
+        all_models = report_df
+
+    all_models = all_models.sort_values('RMSLE', ascending=True)
+    all_models.to_csv(name, index=False)

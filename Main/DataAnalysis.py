@@ -157,7 +157,7 @@ def most_expensive_neighbourhoods(df):
 
     fig = px.choropleth(df, geojson=gj, color="SalePrice",
                         locations="Neighborhood", featureidkey="properties.name",
-                        color_continuous_scale=["red", "yellow", "blue"],
+                        color_continuous_scale='Blues',#["red", "yellow", "blue"],
                         projection="mercator"
                         )
     fig.update_geos(fitbounds="locations", visible=False)

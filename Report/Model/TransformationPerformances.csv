@@ -1,0 +1,19 @@
+Model,Scaler,Test Size,Outlier Handling,RMSLE,allDummy
+ElasticNet,MinMaxScaler,0.1,Replace,0.11959053565595612,True
+XGBRegressor,MinMaxScaler,0.1,Log,0.12738148516877335,True
+XGBRegressor,MinMaxScaler,0.1,Log,0.1291343531682144,False
+ElasticNet,MinMaxScaler,0.1,Replace,0.13419281955187023,False
+GradientBoostingRegressor,MinMaxScaler,0.1,YeoJonson,0.13876036191391966,False
+RandomForestRegressor,RobustScaler,0.1,YeoJonson,0.13992632892424114,False
+RandomForestRegressor,RobustScaler,0.1,YeoJonson,0.14084072777195128,True
+AdaBoostRegressor,StandardScaler,0.3,Replace,0.14518064299883018,True
+GradientBoostingRegressor,MinMaxScaler,0.1,YeoJonson,0.14633790221746906,True
+AdaBoostRegressor,StandardScaler,0.3,Replace,0.15311068352586857,False
+LinearRegression,None,0.1,YeoJonson,0.15460606943610536,True
+LinearRegression,None,0.1,YeoJonson,0.15563996696231855,False
+KNeighborsRegressor,StandardScaler,0.1,Replace,0.17044782119519533,False
+KNeighborsRegressor,StandardScaler,0.1,Replace,0.1753990505256109,True
+SVR,None,0.1,Log,0.21049291893098435,False
+MLPRegressor,None,0.3,Replace,0.2146077146151646,True
+MLPRegressor,None,0.3,Replace,0.21572533337107327,False
+SVR,None,0.1,Log,0.21843019344835785,True

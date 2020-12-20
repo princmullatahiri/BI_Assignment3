@@ -3,58 +3,63 @@ from scipy.stats import yeojohnson
 import numpy as np
 from scipy import stats
 
-def transform_data(df):
-    #ordinal_features = ['Alley','LotShape','LandContour','Utilities','LandSlope','ExterQual','ExterCond','BsmtQual','BsmtCond',
-    #                    'BsmtExposure','BsmtFinType1','BsmtFinType2','HeatingQC','CentralAir','KitchenQual','Functional','FireplaceQu',
-    #                    'GarageFinish','GarageQual','GarageCond','PavedDrive','PoolArea','PoolQC','Fence']
+def transform_data(df, alldummy=False):
+    if alldummy == False:
 
-    #Turn categorical values to ordinal
-    df = df.replace({"Alley" : {"Grvl":1, "Pave":2},
-                     "LotShape": {"IR3":1,"IR2":2,"IR1":3,"Reg":4},
-                     "LandContour": {"Low":1,"HLS":2,"Bnk":3,"Lvl":4},
-                     "Utilities": {"ELO":1,"NoSeWa":2,"NoSewr":3,"AllPub":4},
-                     "LandSlope": {"Sev":1,"Mod":2,"Gtl":3},
-                     "ExterQual": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
-                     "ExterCond": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
-                     "BsmtQual": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
-                     "BsmtCond": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
-                     "BsmtExposure": {"No":1,"Mn":2,"Av":3,"Gd":4},
-                     "BsmtFinType1": {"Unf":1,"LwQ":2,"Rec":3,"BLQ":4,"ALQ":5,"GLQ":6},
-                     "BsmtFinType2": {"Unf":1,"LwQ":2,"Rec":3,"BLQ":4,"ALQ":5,"GLQ":6},
-                     "HeatingQC": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
-                     "CentralAir": {"N":0,"Y":1},
-                     "KitchenQual": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
-                     "Functional": {"Sal":1,"Sev":2,"Maj2":3,"Maj1":4,"Mod":5,"Min2":6,"Min1":7,"Typ":8},
-                     "FireplaceQu": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
-                     "GarageFinish": {"Unf":1,"RFn":2,"Fin":3},
-                     "GarageQual": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
-                     "GarageCond": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
-                     "PavedDrive": {"N":1,"P":2,"Y":3},
-                     "PoolQC": {"Fa":1,"TA":2,"Gd":3,"Ex":4},
-                     "Fence": {"MnWw":1,"GdWo":2,"MnPrv":3,"GdPrv":4},
-                     "Street": {"Grvl":1,"Pave":2}
-                    })
+        #Turn categorical values to ordinal
+        df = df.replace({"Alley" : {"Grvl":1, "Pave":2},
+                         "LotShape": {"IR3":1,"IR2":2,"IR1":3,"Reg":4},
+                         "LandContour": {"Low":1,"HLS":2,"Bnk":3,"Lvl":4},
+                         "Utilities": {"ELO":1,"NoSeWa":2,"NoSewr":3,"AllPub":4},
+                         "LandSlope": {"Sev":1,"Mod":2,"Gtl":3},
+                         "ExterQual": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
+                         "ExterCond": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
+                         "BsmtQual": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
+                         "BsmtCond": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
+                         "BsmtExposure": {"No":1,"Mn":2,"Av":3,"Gd":4},
+                         "BsmtFinType1": {"Unf":1,"LwQ":2,"Rec":3,"BLQ":4,"ALQ":5,"GLQ":6},
+                         "BsmtFinType2": {"Unf":1,"LwQ":2,"Rec":3,"BLQ":4,"ALQ":5,"GLQ":6},
+                         "HeatingQC": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
+                         "CentralAir": {"N":0,"Y":1},
+                         "KitchenQual": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
+                         "Functional": {"Sal":1,"Sev":2,"Maj2":3,"Maj1":4,"Mod":5,"Min2":6,"Min1":7,"Typ":8},
+                         "FireplaceQu": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
+                         "GarageFinish": {"Unf":1,"RFn":2,"Fin":3},
+                         "GarageQual": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
+                         "GarageCond": {"Po":1,"Fa":2,"TA":3,"Gd":4,"Ex":5},
+                         "PavedDrive": {"N":1,"P":2,"Y":3},
+                         "PoolQC": {"Fa":1,"TA":2,"Gd":3,"Ex":4},
+                         "Fence": {"MnWw":1,"GdWo":2,"MnPrv":3,"GdPrv":4},
+                         "Street": {"Grvl":1,"Pave":2}
+                        })
+        df['BsmtCond'] = df['BsmtCond'].astype('int64')
+        df['GarageQual'] = df['GarageQual'].astype('int64')
+        dummy_features = ['MSSubClass', 'MSZoning', 'LotConfig', 'Neighborhood', 'Condition1', 'Condition2', 'BldgType',
+                          'HouseStyle',
+                          'RoofStyle', 'RoofMatl', 'Exterior1st', 'Exterior2nd', 'MasVnrType', 'Foundation', 'Heating',
+                          'Electrical',
+                          'GarageType', 'MiscFeature', 'SaleType', 'SaleCondition']
 
-    df['BsmtCond'] = df['BsmtCond'].astype('int64')
-    df['GarageQual'] = df['GarageQual'].astype('int64')
+    else:
+        dummy_features = ['MSSubClass', 'MSZoning', 'LotConfig', 'Neighborhood', 'Condition1', 'Condition2', 'BldgType',
+                          'HouseStyle', 'LotShape', 'LandContour', 'Utilities', 'LandSlope', 'ExterQual', 'ExterCond',
+                          'BsmtQual',
+                          'RoofStyle', 'RoofMatl', 'Exterior1st', 'Exterior2nd', 'MasVnrType', 'Foundation', 'Heating',
+                          'CentralAir',
+                          'Electrical', 'Alley', 'BsmtCond', 'BsmtExposure', 'BsmtFinType1', 'BsmtFinType2',
+                          'HeatingQC', 'KitchenQual',
+                          'Functional', 'FireplaceQu', 'GarageFinish', 'GarageQual', 'GarageCond', 'PavedDrive',
+                          'PoolQC', 'Fence', 'Street',
+                          'GarageType', 'MiscFeature', 'SaleType', 'SaleCondition']
+
+
+
     # Turn some numbers to real categorical values
     df = df.replace({"MSSubClass": {20:"MSSC20",30:"MSSC30",40:"MSSC40",45:"MSSC45",50:"MSSC50",60:"MSSC60",70:"MSSC70",75:"MSSC75",
                                     80:"MSSC80",85:"MSSC85",90:"MSSC90",120:"MSSC120",150:"MSSC150",160:"MSSC160",180:"MSSC180",190:"MSSC190"}
                      })
 
-
     # Convert categorical variable into dummy/indicator variables.
-    dummy_features= ['MSSubClass','MSZoning','LotConfig','Neighborhood','Condition1','Condition2','BldgType','HouseStyle',
-                     'RoofStyle','RoofMatl','Exterior1st','Exterior2nd','MasVnrType','Foundation','Heating','Electrical',
-                     'GarageType','MiscFeature','SaleType','SaleCondition']
-
-    # dummy_features = ['MSSubClass', 'MSZoning', 'LotConfig', 'Neighborhood', 'Condition1', 'Condition2', 'BldgType',
-    #                   'HouseStyle','LotShape','LandContour','Utilities','LandSlope','ExterQual','ExterCond','BsmtQual',
-    #                   'RoofStyle', 'RoofMatl', 'Exterior1st', 'Exterior2nd', 'MasVnrType', 'Foundation', 'Heating','CentralAir',
-    #                   'Electrical','Alley','BsmtCond','BsmtExposure','BsmtFinType1','BsmtFinType2','HeatingQC','KitchenQual',
-    #                    'Functional','FireplaceQu','GarageFinish','GarageQual','GarageCond'   ,'PavedDrive' ,'PoolQC'   ,'Fence'  ,'Street',
-    #                   'GarageType', 'MiscFeature', 'SaleType', 'SaleCondition']
-
     df = pd.get_dummies(df,columns=dummy_features)
     df = df.set_index('Id')
     return df

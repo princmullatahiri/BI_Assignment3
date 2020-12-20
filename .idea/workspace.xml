@@ -3,10 +3,26 @@
   <component name="ChangeListManager">
     <list default="true" id="7013fcd8-98d5-4081-a4f7-19101a810396" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/DataAnalysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main/DataAnalysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main/Model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/Preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main/Preprocessing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/VisualizationOfResult.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main/VisualizationOfResult.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualizations/Data Analysis/correlation_matrix_plot.png" beforeDir="false" afterPath="$PROJECT_DIR$/visualizations/Data Analysis/correlation_matrix_plot.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualizations/Data Analysis/correlation_plot.png" beforeDir="false" afterPath="$PROJECT_DIR$/visualizations/Data Analysis/correlation_plot.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualizations/Data Analysis/house_prices_by_neighborhoods.png" beforeDir="false" afterPath="$PROJECT_DIR$/visualizations/Data Analysis/house_prices_by_neighborhoods.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualizations/Data Analysis/missing_values_percentage.png" beforeDir="false" afterPath="$PROJECT_DIR$/visualizations/Data Analysis/missing_values_percentage.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualizations/Results/score_XGBRegressor_outlier_scaler.png" beforeDir="false" afterPath="$PROJECT_DIR$/visualizations/Results/score_XGBRegressor_outlier_scaler.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/visualizations/Results/score_competition.png" beforeDir="false" afterPath="$PROJECT_DIR$/visualizations/Results/score_competition.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualizations/Results/score_competition_feature_selection.png" beforeDir="false" afterPath="$PROJECT_DIR$/visualizations/Results/score_competition_feature_selection.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualizations/Results/score_model_outlier_handling.png" beforeDir="false" afterPath="$PROJECT_DIR$/visualizations/Results/score_model_outlier_handling.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualizations/Results/score_modelsRFE.png" beforeDir="false" afterPath="$PROJECT_DIR$/visualizations/Results/score_modelsRFE.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualizations/Results/score_models_PCA.png" beforeDir="false" afterPath="$PROJECT_DIR$/visualizations/Results/score_models_PCA.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualizations/Results/score_models_fit_time.png" beforeDir="false" afterPath="$PROJECT_DIR$/visualizations/Results/score_models_fit_time.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualizations/Results/score_models_kBest.png" beforeDir="false" afterPath="$PROJECT_DIR$/visualizations/Results/score_models_kBest.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualizations/Results/score_models_scalers.png" beforeDir="false" afterPath="$PROJECT_DIR$/visualizations/Results/score_models_scalers.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualizations/Results/score_models_test_size.png" beforeDir="false" afterPath="$PROJECT_DIR$/visualizations/Results/score_models_test_size.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +34,7 @@
     <SUITE FILE_PATH="coverage/BI_Assignment3$VisualizationOfResult.coverage" NAME="VisualizationOfResult Coverage Results" MODIFIED="1607775295888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Main" />
     <SUITE FILE_PATH="coverage/BI_Assignment3$DataAnalysis.coverage" NAME="DataAnalysis Coverage Results" MODIFIED="1607252339327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Main" />
     <SUITE FILE_PATH="coverage/BI_Assignment3$Preprocessing.coverage" NAME="Preprocessing Coverage Results" MODIFIED="1607351302061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Main" />
-    <SUITE FILE_PATH="coverage/BI_Assignment3$Main.coverage" NAME="Main Coverage Results" MODIFIED="1607901532407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Main" />
+    <SUITE FILE_PATH="coverage/BI_Assignment3$Main.coverage" NAME="Main Coverage Results" MODIFIED="1608465264867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Main" />
     <SUITE FILE_PATH="coverage/BI_Assignment3$Model.coverage" NAME="Model Coverage Results" MODIFIED="1607449688902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Main" />
   </component>
   <component name="FileEditorManager">
@@ -26,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+            <state relative-caret-position="153">
+              <caret line="30" column="37" lean-forward="true" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -38,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main/DataAnalysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+            <state relative-caret-position="748">
+              <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -50,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main/Preprocessing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1649">
-              <caret line="100" column="72" selection-start-line="100" selection-start-column="72" selection-end-line="100" selection-end-column="72" />
+            <state relative-caret-position="85">
+              <caret line="5" column="31" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="31" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -62,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main/Model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="324" column="18" lean-forward="true" selection-start-line="324" selection-start-column="18" selection-end-line="324" selection-end-column="18" />
+            <state relative-caret-position="266">
+              <caret line="433" column="12" lean-forward="true" selection-start-line="433" selection-start-column="12" selection-end-line="434" selection-end-column="35" />
               <folding>
                 <element signature="e#1#111#0" expanded="true" />
               </folding>
@@ -74,8 +90,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main/BestModels.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="204">
+              <caret line="17" column="20" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="20" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -86,8 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main/VisualizationOfResult.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="31" column="70" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="70" />
+            <state relative-caret-position="88">
+              <caret line="78" column="24" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="24" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -109,6 +125,9 @@
       <find>BsmtCond</find>
       <find>ignore</find>
       <find>train_test</find>
+      <find>score_competition</find>
+      <find>score_competition_feature_selection</find>
+      <find>score_model_outlier_handling</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -120,8 +139,8 @@
         <option value="$PROJECT_DIR$/Main/BestModels.py" />
         <option value="$PROJECT_DIR$/Main/DataAnalysis.py" />
         <option value="$PROJECT_DIR$/Main/Preprocessing.py" />
-        <option value="$PROJECT_DIR$/Main/VisualizationOfResult.py" />
         <option value="$PROJECT_DIR$/Main/Model.py" />
+        <option value="$PROJECT_DIR$/Main/VisualizationOfResult.py" />
         <option value="$PROJECT_DIR$/Main/Main.py" />
       </list>
     </option>
@@ -339,23 +358,24 @@
       <workItem from="1607855751443" duration="9477000" />
       <workItem from="1607885153644" duration="14861000" />
       <workItem from="1607900244863" duration="791000" />
-      <workItem from="1607901096337" duration="784000" />
+      <workItem from="1607901096337" duration="836000" />
+      <workItem from="1608376744133" duration="604000" />
+      <workItem from="1608456635317" duration="8705000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="160832000" />
+    <option name="totallyTimeSpent" value="170193000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2946309" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30268458" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -402,18 +422,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Main/DataAnalysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main/Preprocessing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1649">
-          <caret line="100" column="72" selection-start-line="100" selection-start-column="72" selection-end-line="100" selection-end-column="72" />
+        <state relative-caret-position="748">
+          <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -422,8 +432,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Main/BestModels.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="204">
+          <caret line="17" column="20" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="20" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>
@@ -432,8 +442,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Main/VisualizationOfResult.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="31" column="70" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="70" />
+        <state relative-caret-position="88">
+          <caret line="78" column="24" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main/Preprocessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="31" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="31" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -442,8 +462,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Main/Model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="324" column="18" lean-forward="true" selection-start-line="324" selection-start-column="18" selection-end-line="324" selection-end-column="18" />
+        <state relative-caret-position="266">
+          <caret line="433" column="12" lean-forward="true" selection-start-line="433" selection-start-column="12" selection-end-line="434" selection-end-column="35" />
           <folding>
             <element signature="e#1#111#0" expanded="true" />
           </folding>
@@ -452,8 +472,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Main/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+        <state relative-caret-position="153">
+          <caret line="30" column="37" lean-forward="true" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

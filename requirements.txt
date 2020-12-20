@@ -1,3 +1,11 @@
-pip install pydot
-pip install pydotplus
-pip install graphviz
+pandas
+matplotlib
+seaborn
+plotly
+numpy
+sklearn
+json
+warnings
+time
+pathlib
+xgboost

@@ -6,16 +6,20 @@ from VisualizationOfResult import *
 import warnings
 warnings.filterwarnings("ignore")
 #
-# df = pd.read_csv('../data/train.csv')
-# # plot_percentage_of_missing_values(df)
-# # most_expensive_neighbourhoods(df)
-# df = handle_missing_values(df)
+df = pd.read_csv('../data/train.csv')
+# plot_percentage_of_missing_values(df)
+#most_expensive_neighbourhoods(df)
+df = handle_missing_values(df)
+df, numerical_features = handle_outliers(df, method='Replace')
+df = transform_data(df)
+
 # #
 # best_model, best_scaler, best_outlier_selection, best_test_size = best_models(i=8)
 #
 # # # plot_outliers(df, 'GrLivArea')
-# df, numerical_features = handle_outliers(df, method=best_outlier_selection)
-# df = transform_data(df)
+
+
+
 # #plot_outliers(df, 'GrLivArea')
 # # para_cords(df)
 #
@@ -33,8 +37,8 @@ warnings.filterwarnings("ignore")
 
 #
 
-#show_correlation_plot(df)
-# plot_correlation(df)
+show_correlation_plot(df)
+plot_correlation(df)
 
 # plot_outliers(df, 'LotArea')
 
@@ -72,20 +76,31 @@ scalers = ['None', 'StandardScaler', 'RobustScaler', 'MinMaxScaler']
 # df = pd.read_csv('../data/train.csv')
 # df = handle_missing_values(df)
 # df, numerical_features = handle_outliers(df, method='Log')
-# df = transform_data(df)
-#
+# df = transform_data(df, alldummy=True)
+# # #
 # test = pd.read_csv('../data/test.csv')
 # index = list(test.Id)
 # test = handle_missing_values(test, isTest=True)
 # test, numerical_features1 = handle_outliers(test, method='Log', isTest = True)
-# test = transform_data(test)
-# train_neural_network(test, df, numerical_features, 'MinMaxScaler', index)
-# plot_percentage_of_missing_values(test)
+# test = transform_data(test, alldummy=True)
+# # train_neural_network(test, df, numerical_features, 'MinMaxScaler', index)
+# # plot_percentage_of_missing_values(test)
 # create_submission_for_top3_models(test, df, numerical_features, 'MinMaxScaler', index)
 #
 # create_submission_for_bestfeatures(test, df, numerical_features, index)
 #
 #
+
+
+#RMSE, MSE, MAE, R2
+# other_measures()
+
+#BestModels with dommy encoding for all
+# for dummy in [True, False]:
+#     all_dummy_encoding(alldummy=dummy)
+
+# all_dummy_result()
+# result_in_competition_alldummy()
 
 # mean_fit_time()
 # model_result_scaler()
@@ -97,3 +112,5 @@ scalers = ['None', 'StandardScaler', 'RobustScaler', 'MinMaxScaler']
 # best_model_kBest()
 # best_model_RFE()
 # best_model_PCA()
+
+

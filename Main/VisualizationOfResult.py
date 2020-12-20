@@ -391,3 +391,61 @@ def plot_curve_neural_network(history):
     plt.savefig('../visualizations/Results/curve_neural_network.png')
     plt.show()
 
+def all_dummy_result():
+    df = pd.read_csv('../Report/Model/TransformationPerformances.csv')
+    df = df.sort_values('Model')
+
+
+    models = df.Model.unique()
+
+    barWidth = 0.35
+    r1 = np.arange(len(models))
+    r2 = [x + barWidth for x in r1]
+
+
+    fig, ax = plt.subplots()
+
+
+
+    ax.bar(r1, list(df[df.allDummy == True].RMSLE), barWidth, label='All Dummy')
+    ax.bar(r2, list(df[df.allDummy == False].RMSLE), barWidth, label='Ordinal Values')
+
+    plt.xticks([r + barWidth for r in range(len(models))], models)
+
+    plt.xticks(rotation='vertical')
+    plt.title('Model Scores')
+
+    plt.xlabel('Model')
+    plt.ylabel('RMSLE')
+    ax.legend()
+    #plt.savefig('../visualizations/Results/score_competition.png')
+    plt.show()
+
+def result_in_competition_alldummy():
+    list_of_models = ['ElasticNet','XGBRegressor','RandomForestRegressor']
+    result = [0.15423,0.14720,0.23571]
+    result_with_alldummy = [0.14226,0.14059,0.24572]
+
+    barWidth = 0.35
+    r1 = np.arange(len(list_of_models))
+    r2 = [x + barWidth for x in r1]
+
+
+
+    fig, ax = plt.subplots()
+
+
+    ax.bar(r1, result, barWidth, label='Ordinal Values')
+    ax.bar(r2, result_with_alldummy, barWidth, label='All Dummy')
+
+    plt.xticks([r + barWidth for r in range(len(list_of_models))], list_of_models)
+
+    plt.xticks(rotation='vertical')
+    plt.title('Model Score in Competition with/without All Dummys')
+
+    plt.xlabel('Model')
+    plt.ylabel('RMSLE')
+    ax.legend()
+    # plt.savefig('../visualizations/Results/score_competition_feature_selection.png')
+    plt.show()
+
