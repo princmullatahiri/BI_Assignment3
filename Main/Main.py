@@ -6,13 +6,16 @@ from VisualizationOfResult import *
 import warnings
 warnings.filterwarnings("ignore")
 #
-df = pd.read_csv('../data/train.csv')
-# plot_percentage_of_missing_values(df)
-#most_expensive_neighbourhoods(df)
-df = handle_missing_values(df)
-df, numerical_features = handle_outliers(df, method='Replace')
-df = transform_data(df)
-
+# df = pd.read_csv('../data/train.csv')
+#
+#
+# # plot_percentage_of_missing_values(df)
+# #most_expensive_neighbourhoods(df)
+# df = handle_missing_values(df)
+# df, numerical_features = handle_outliers(df, method='Replace')
+# df = transform_data(df)
+#
+# print(len(df.columns))
 # #
 # best_model, best_scaler, best_outlier_selection, best_test_size = best_models(i=8)
 #
@@ -37,16 +40,16 @@ df = transform_data(df)
 
 #
 
-show_correlation_plot(df)
-plot_correlation(df)
+# show_correlation_plot(df)
+# plot_correlation(df)
 
 # plot_outliers(df, 'LotArea')
 
 
-
-outler_handling = ['Replace','Log','YeoJonson']
-test_size = [0.1,0.2,0.3]
-scalers = ['None', 'StandardScaler', 'RobustScaler', 'MinMaxScaler']
+#
+# outler_handling = ['Replace','Log','YeoJonson']
+# test_size = [0.1,0.2,0.3]
+# scalers = ['None', 'StandardScaler', 'RobustScaler', 'MinMaxScaler']
 
 #
 # for outler in outler_handling:
@@ -77,13 +80,13 @@ scalers = ['None', 'StandardScaler', 'RobustScaler', 'MinMaxScaler']
 # df = handle_missing_values(df)
 # df, numerical_features = handle_outliers(df, method='Log')
 # df = transform_data(df, alldummy=True)
-# # #
+# # # #
 # test = pd.read_csv('../data/test.csv')
 # index = list(test.Id)
 # test = handle_missing_values(test, isTest=True)
 # test, numerical_features1 = handle_outliers(test, method='Log', isTest = True)
 # test = transform_data(test, alldummy=True)
-# # train_neural_network(test, df, numerical_features, 'MinMaxScaler', index)
+# train_neural_network(test, df, numerical_features, 'MinMaxScaler', index)
 # # plot_percentage_of_missing_values(test)
 # create_submission_for_top3_models(test, df, numerical_features, 'MinMaxScaler', index)
 #
@@ -114,3 +117,4 @@ scalers = ['None', 'StandardScaler', 'RobustScaler', 'MinMaxScaler']
 # best_model_PCA()
 
 
+validation_result()

@@ -449,3 +449,21 @@ def result_in_competition_alldummy():
     # plt.savefig('../visualizations/Results/score_competition_feature_selection.png')
     plt.show()
 
+def validation_result():
+
+    df = pd.read_csv('../Report/Model/Model Performances.csv')
+
+    df = df[['Model','Validation RMSLE']].groupby('Model', as_index=False).min()
+
+    df = df.sort_values(by=['Validation RMSLE'], ascending=True)
+
+    models = list(df['Model'])
+    results = list(df['Validation RMSLE'])
+
+    plt.bar(models, results)
+    plt.xticks(rotation='vertical')
+    plt.title('Model results in validation set')
+    plt.xlabel('Model')
+    plt.ylabel('RMSLE')
+    plt.show()
+

@@ -281,8 +281,8 @@ def train_neural_network(test, train, nftrain, scaler, index):
     from tensorflow.keras import Sequential
     from tensorflow.keras.layers import Dense, Dropout
     from numpy.random import seed
-    from VisualizationOfResult import plot_curve_neural_network
-    from tensorflow.keras.utils import plot_model
+    # from VisualizationOfResult import plot_curve_neural_network
+    # from tensorflow.keras.utils import plot_model
     import tensorflow
     seed(101)
     tensorflow.random.set_seed(101)
@@ -314,20 +314,20 @@ def train_neural_network(test, train, nftrain, scaler, index):
     model.add(Dense(1,))
     model.compile(optimizer='adam', loss='mse', metrics=['mae'])
     model.summary()
-    start = time.time()
-    model.fit(X_tr, y_tr, epochs=350, batch_size=64, verbose=2, validation_data=(X_val, y_val))
-    end = time.time()
-    fit_time = end - start
-    print(fit_time)
-
-    y_pred = model.predict(X_test)
-    data = {
-        'Id': index,
-        'SalePrice': list(y_pred)
-    }
-    submit_df = pd.DataFrame(data=data)
-
-    submit_df.to_csv('../Submissions/KerasNeuralNetwork.csv', index=False)
+    # start = time.time()
+    # model.fit(X_tr, y_tr, epochs=350, batch_size=64, verbose=2, validation_data=(X_val, y_val))
+    # end = time.time()
+    # fit_time = end - start
+    # print(fit_time)
+    #
+    # y_pred = model.predict(X_test)
+    # data = {
+    #     'Id': index,
+    #     'SalePrice': list(y_pred)
+    # }
+    # submit_df = pd.DataFrame(data=data)
+    #
+    # submit_df.to_csv('../Submissions/KerasNeuralNetwork.csv', index=False)
 
 
 

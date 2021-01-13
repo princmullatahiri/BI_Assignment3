@@ -43,6 +43,7 @@ The best models were used to perform feature selection, PCA, other transformatio
 All the results can be found in: *Report\FeatureSelection* and *Report\Model* 
 The best model was XGBRegressor with these hyperparameters *subsample= 0.7, objective= 'reg:squarederror', n_estimators= 64, min_child_weight= 3, max_depth= 6, learning_rate= 0.1, colsample_bytree= 0.6*  using MinMaxScaler and Log transformation and using for testing 10% of values with all categorical variables turned into dummy variables with a RMSLE of 0.14059.
 
+
 ## Code
 
 ### Main.py

@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import seaborn as sns
 import plotly.graph_objects as go
 import numpy as np
@@ -166,3 +167,27 @@ def most_expensive_neighbourhoods(df):
     fig.update_layout(title='<b>House Prices by Neighborhoods</b>')
     fig.show()
 
+
+def statistical_plots(df):
+    sns.displot(df, x="SalePrice")
+    plt.xticks(rotation=45)
+    plt.vlines(x=df.SalePrice.min(), color= 'red',linestyle='--',ymin=-0, ymax=178)
+    plt.vlines(x=df.SalePrice.max(), color= 'red',linestyle='--',ymin=-0, ymax=140)
+    plt.vlines(x=df.SalePrice.mean(), color= 'green',linestyle='--',ymin=-0, ymax=172)
+    plt.vlines(x=df.SalePrice.median(), color= 'orange', linestyle='--',ymin=-0, ymax=178)
+
+    plt.ylim(0, 190)
+    minmax = mpatches.Patch(color='red', label='Min/Max')
+    avg = mpatches.Patch(color='green', label='Average')
+    med = mpatches.Patch(color='orange', label='Median')
+
+    plt.legend(handles=[minmax, avg, med])
+
+    plt.text(df.SalePrice.min(), 180, str(df.SalePrice.min()), color='red')
+    plt.text(df.SalePrice.max(), 142, str(df.SalePrice.max()), color='red')
+    plt.text(df.SalePrice.mean(), 174, str(df.SalePrice.mean()), color='green')
+    plt.text(df.SalePrice.median(), 180, str(df.SalePrice.median()), color='orange')
+
+    plt.title('Distribution of SalePrice')
+
+    plt.show()
